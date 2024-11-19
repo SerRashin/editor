@@ -55,6 +55,7 @@ const options = $ref({
       notEqual: false
 
     },
+    enableComment: false
   },
   templates,
   cdnUrl: 'https://cdn.umodoc.com',
