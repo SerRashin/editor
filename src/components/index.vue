@@ -440,6 +440,10 @@ const setPage = (params: {
   }
 }
 
+const getPage = () => {
+  return page;
+};
+
 const setWatermark = (params: Partial<WatermarkOption>) => {
   if (!isRecord(params)) {
     throw new Error('params must be an object.')
@@ -803,6 +807,7 @@ defineExpose({
   setOptions,
   setToolbar,
   setPage,
+  getPage,
   setWatermark,
   setDocument,
   setContent,
