@@ -45,8 +45,8 @@
   },
   "types": "./types/index.d.ts",
   "scripts": {
-    "build": "vue-tsc --noEmit && vite build",
-    "dev": "vite --port 9000",
+    "build": "vite build",
+    "dev": "vite --port 9001 --open --force",
     "format": "prettier --write .",
     "check:code": "eslint --cache src",
     "check:style": "stylelint src/**/*.{css,less,vue}",
@@ -57,8 +57,7 @@
     "test:coverage": "npm run test --coverage",
     "test:watch": "npm run test --watch --coverage",
     "prepare": "husky",
-    "prepublishOnly": "npm run build",
-    "postinstall": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@eslint/object-schema": "^2.1.4",
@@ -105,7 +104,7 @@
     "buffer-image-size": "^0.6.4",
     "docx": "^8.5.0",
     "dom-to-image-more": "^3.4.3",
-    "es-drager": "1.2.11",
+    "es-drager": "^1.2.11",
     "file-saver": "^2.0.5",
     "file64": "^1.0.4",
     "hotkeys-js": "^3.13.7",

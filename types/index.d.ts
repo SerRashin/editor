@@ -180,6 +180,7 @@ export interface AssistantResult {
 
 export interface UmoEditorOptions {
   editorKey: string
+  enableTitle: boolean
   locale: SupportedLocale
   theme: 'light' | 'dark'
   height: string

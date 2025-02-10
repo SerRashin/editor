@@ -1,6 +1,5 @@
 <template>
-  <div class="box" :class="{ 'hide-editor': readOnly }">
-    <button @click="toggleReadOnly">readonly</button>
+  <div class="box">
     <umo-editor ref="editorRef" v-bind="options" />
   </div>
 </template>
@@ -10,17 +9,6 @@ import { shortId } from '@/utils/short-id'
 // import { UmoEditor } from '../dist/umo-editor'
 
 const editorRef = $ref(null)
-let readOnly = $ref(false)
-
-const toggleReadOnly = () => {
-  readOnly = !readOnly
-  editorRef.setReadOnly(readOnly)
-}
-
-onMounted(() => {
-  editorRef.setReadOnly(readOnly)
-})
-
 const templates = [
   {
     title: { zh_CN: '工作任务', en_US: 'Work Task', pt_BR: 'Tarefas de Trabalho' },
@@ -36,7 +24,8 @@ const templates = [
   },
 ]
 const options = $ref({
-  locale: 'pt-BR',
+  locale: 'ru-RU',
+  enableTitle: false,
   toolbar: {
     // defaultMode: 'classic',
     // menus: ['base'],
@@ -44,17 +33,7 @@ const options = $ref({
   },
   document: {
     // title: '测试文档',
-    content: `<p></p>`,
-    typographyRules: {
-      openDoubleQuote: false,
-      rightArrow: false,
-      leftArrow: false,
-      closeDoubleQuote: false,
-      openSingleQuote: false,
-      closeSingleQuote: false,
-      notEqual: false
-
-    },
+    content: localStorage.getItem('document.content') ?? '<p>测试文档</p>',
     enableComment: false
   },
   templates,
@@ -69,7 +48,7 @@ const options = $ref({
     // ],
   },
   assistant: {
-    enabled: true,
+    enabled: false,
   },
   user: {
     userId: 'umoeditor',
@@ -78,19 +57,34 @@ const options = $ref({
   },
   page: {
     defaultMargin: {
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
+      left: 3,
+      right: 1.5,
+      top: 2,
+      bottom: 2,
     }
   },
-  async onSave(_: string, __: number, document: { content: string }) {
-    console.log(document.content)
-    console.log(editorRef.getHTML())
-    console.log(editorRef.getJSON())
+  async onSave(content: string, page: number, document: { content: string }) {
+    // console.log(content)
+    console.log(editorRef);
+    // console.log(editorRef.getHTML())
+    // console.log(editorRef.getJSON())
   },
   async onFileDelete(...args: any) {
     console.log(args)
+  },
+  async onSave(content: string, page: number, document: { content: string }) {
+    localStorage.setItem('document.content', document.content)
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const success = true
+        if (success) {
+          console.log('onSave', { content, page, document })
+          resolve('操作成功')
+        } else {
+          reject(new Error('操作失败'))
+        }
+      }, 2000)
+    })
   },
   async onFileUpload(file: File & { url?: string }) {
     console.log(file)

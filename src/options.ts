@@ -21,12 +21,23 @@ import type {
 // 默认配置
 const defaultOptions: UmoEditorOptions = {
   editorKey: 'default',
+  enableTitle: false,
   locale: 'en-US',
   theme: 'light',
   height: '100%',
   dicts: {
     fonts: [
-      { label: { en_US: 'Default Font', zh_CN: '默认字体', ru_RU: 'default', pt_BR: 'Fonte padrão'}, value: null },
+      { label: { en_US: 'Default Font', zh_CN: '默认字体', ru_RU: 'Стандартный', pt_BR: 'Fonte padrão'}, value: null },
+      { label: 'Arial', value: 'Arial' },
+      { label: 'Times New Roman', value: 'Times New Roman' },
+      { label: 'Verdana', value: 'Verdana' },
+      { label: 'Helvetica', value: 'Helvetica' },
+      { label: 'Calibri', value: 'Calibri' },
+      { label: 'Cambria', value: 'Cambria' },
+      { label: 'Tahoma', value: 'Tahoma' },
+      { label: 'Georgia', value: 'Georgia' },
+      { label: 'Comic Sans MS', value: 'Comic Sans MS' },
+      { label: 'Impact', value: 'Impact' },
       { label: { en_US: 'Songti', zh_CN: '宋体', ru_RU: 'Songti', pt_BR: 'Songti' }, value: 'SimSun' },
       { label: { en_US: 'Heiti', zh_CN: '黑体', ru_RU: 'Heiti', pt_BR: 'Heiti' }, value: 'SimHei' },
       { label: { en_US: 'Kaiti', zh_CN: '楷体', ru_RU: 'Kaiti', pt_BR: 'Kaiti' }, value: 'KaiTi' },
@@ -55,7 +66,7 @@ const defaultOptions: UmoEditorOptions = {
       {
         label: { en_US: 'Microsoft Yahei', zh_CN: '微软雅黑', ru_RU: 'Microsoft Yahei', pt_BR: 'Microsoft Yahei' },
         value: 'Microsoft Yahei',
-      }
+      },
     ],
     // prettier-ignore
     colors: [
@@ -454,6 +465,11 @@ const objectSchema = new ObjectSchema({
     validate: 'string!',
     required: false,
   },
+  enableTitle: {
+    merge: 'replace',
+    validate: 'boolean',
+    required: false,
+  },
   dicts: {
     required: false,
     merge: 'replace',
@@ -673,6 +689,28 @@ const objectSchema = new ObjectSchema({
           bottom: {
             merge: 'replace',
             validate: 'number',
+            required: false,
+          },
+        },
+      },
+      size: {
+        required: false,
+        merge: 'replace',
+        validate: 'object',
+        schema: {
+          width: {
+            merge: 'replace',
+            validate: 'number',
+            required: false,
+          },
+          height: {
+            merge: 'replace',
+            validate: 'number',
+            required: false,
+          },
+          label: {
+            merge: 'replace',
+            validate: 'string',
             required: false,
           },
         },

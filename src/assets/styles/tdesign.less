@@ -46,15 +46,25 @@
   }
 }
 .umo-toolbar {
-  .umo-input.umo-size-s {
-    --td-comp-paddingLR-s: 5px;
-    &.umo-input--suffix {
-      padding-right: 2px !important;
-    }
-    &__suffix {
-      &:not(:empty) {
-        margin-left: 0 !important;
+  .umo-input {
+    &.umo-size-s {
+      --td-comp-paddingLR-s: 5px;
+      &.umo-input--suffix {
+        padding-right: 2px !important;
       }
+      &__suffix {
+        &:not(:empty) {
+          margin-left: 0 !important;
+        }
+      }
+    }
+    .umo-input__prefix {
+      overflow: hidden;
+      white-space: nowrap;
+      min-width: 0;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      display: block;
     }
   }
 }

@@ -18,7 +18,7 @@
       :style="{ height: options.height }"
     >
       <header class="umo-toolbar">
-        <div class="umo-editor-title">
+        <div class="umo-editor-title" v-if="options.enableTitle">
           <t-input
             v-model="options.document.title"
             :placeholder="t('document.title')"

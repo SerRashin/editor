@@ -44,7 +44,26 @@ const { editor } = useStore()
 const $toolbar = useState('toolbar')
 
 const fontSizes = [
-  { label: 'base.fontSize.default', value: '14px', order: 4, useI18n: true },
+  { label: 'base.fontSize.default', value: '12px', order: 3, useI18n: true },
+  { label: '10', value: '10px', order: 1 },
+  { label: '11', value: '11px', order: 2 },
+  { label: '12', value: '12px', order: 3 },
+  { label: '13', value: '13px', order: 4 },
+  { label: '14', value: '14px', order: 5 },
+  { label: '15', value: '15px', order: 6 },
+  { label: '16', value: '16px', order: 7 },
+  { label: '18', value: '18px', order: 8 },
+  { label: '20', value: '20px', order: 9 },
+  { label: '22', value: '22px', order: 10 },
+  { label: '24', value: '24px', order: 11 },
+  { label: '26', value: '26px', order: 12 },
+  { label: '28', value: '28px', order: 13 },
+  { label: '32', value: '32px', order: 15 },
+  { label: '36', value: '36px', order: 17 },
+  { label: '42', value: '42px', order: 18 },
+  { label: '48', value: '48px', order: 19 },
+  { label: '72', value: '72px', order: 21 },
+  { label: '96', value: '96px', order: 22 },
   { label: 'base.fontSize.42pt', value: '42pt', order: 20, useI18n: true }, //56
   { label: 'base.fontSize.36pt', value: '36pt', order: 19, useI18n: true }, //48
   { label: 'base.fontSize.26pt', value: '26pt', order: 16, useI18n: true }, //35
@@ -59,22 +78,6 @@ const fontSizes = [
   { label: 'base.fontSize.9pt', value: '9pt', order: 3, useI18n: true  }, //12
   { label: 'base.fontSize.7_5pt', value: '7.5pt', order: 1, useI18n: true  }, //10
   { label: 'base.fontSize.6_5pt', value: '6.5pt', order: 0, useI18n: true  }, //9
-  { label: '10', value: '10px', order: 1 },
-  { label: '11', value: '11px', order: 2 },
-  { label: '12', value: '12px', order: 3 },
-  { label: '16', value: '16px', order: 5 },
-  { label: '18', value: '18px', order: 6 },
-  { label: '20', value: '20px', order: 8 },
-  { label: '22', value: '22px', order: 10 },
-  { label: '24', value: '24px', order: 11 },
-  { label: '26', value: '26px', order: 12 },
-  { label: '28', value: '28px', order: 13 },
-  { label: '32', value: '32px', order: 15 },
-  { label: '36', value: '36px', order: 17 },
-  { label: '42', value: '42px', order: 18 },
-  { label: '48', value: '48px', order: 19 },
-  { label: '72', value: '72px', order: 21 },
-  { label: '96', value: '96px', order: 22 },
 ]
 
 // 设置字体大小
